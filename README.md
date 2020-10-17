@@ -24,9 +24,9 @@ A personal diary that allow you to add, edit and delete notes.
     npm install express
     npm install uuid
     ```
-4. You are done for the setup, run the readme generator using 
+4. You are done for the setup, run the server using 
     ```
-    node index.js
+    npm run server.js
     ```  
 
 ### Technologies Utilized
@@ -36,24 +36,15 @@ A personal diary that allow you to add, edit and delete notes.
 
 ## Usage
 Once installed:
-* Create a GitHub repo, including a License file and Contributing Covenant to ensure badges work, delete the badges post creation if not required.
-* Run the readme generator using
-```
-   node index.js
-```
-* When prompted, enter your GitHub username
-* A list of your repos will be displayed
-    * Select the repo to create the readme for
-* Select the optional sections to include
-    * Require sections:
-        * Title, Description, Contents, and Questions
-    * Optional sections:
-        * Installation, Usage, License, Contributing, and Tests
-* When prompted enter the required information
-    * If you want to input multiple lines type 'editor' and your default text editor will open to receive input
+* Create and save notes.
 
-        (Note: my windows PC with Notepad caused an anomaly when using the 'editor' interested to see how you get on.)
-* Once created open the file and make any required modifications, i.e. adding images and personal styling requirements.  
+* View previously saved notes.
+
+* Delete previously saved notes.
+
+### Heroku Deployment
+
+View the deployed app here: https://agile-badlands-99229.herokuapp.com/
 
 ## License
  
