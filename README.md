@@ -55,7 +55,14 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
 ## Tests
- 
+
+Use <a href="https://www.postman.com/downloads/" target="_blank">Postman</a> to test these end points:
+* Get:- http://localhost:5000/api/notes
+* Post:- http://localhost:5000/api/notes
+* Delete:- http://localhost:5000/api/notes/:id
+* Put:- http://localhost:5000/api/notes/:id
+
+Note: see "Personal_Diary.postman_collection.json" for Postman Collection.
 
 ## Questions
     
