@@ -40,6 +40,8 @@ Once installed:
 
 * View previously saved notes.
 
+* Edid previously saved notes.
+
 * Delete previously saved notes.
 
 ### Heroku Deployment
