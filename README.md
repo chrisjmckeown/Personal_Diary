@@ -22,6 +22,7 @@ A personal diary that allow you to add, edit and delete notes.
 3. Install the dependancies.<br />
     ```
     npm install express
+    npm install uuid
     ```
 4. You are done for the setup, run the readme generator using 
     ```
