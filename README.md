@@ -21,13 +21,12 @@ A personal diary that allow you to add, edit and delete notes.
 2. Clone this repo
 3. Install the dependancies.<br />
     ```
-    npm install inquirer
-    npm install axios
-   ```
+    npm install express
+    ```
 4. You are done for the setup, run the readme generator using 
     ```
     node index.js
-   ```  
+    ```  
 
 ### Technologies Utilized
 ![GitHub language count](https://img.shields.io/github/languages/count/chrisjmckeown/Personal_Diary?style=flat-square)![GitHub top language](https://img.shields.io/github/languages/top/chrisjmckeown/Personal_Diary?style=flat-square)
