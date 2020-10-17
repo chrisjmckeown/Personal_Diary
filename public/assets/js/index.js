@@ -32,13 +32,28 @@ const deleteNote = (id) => {
   });
 };
 
+// A function for deleting a note from the db
+const editNote = (note) => {
+  return $.ajax({
+    url: "api/notes/" + note.id,
+    data: note,
+    method: "PUT",
+  });
+};
+
+
 // If there is an activeNote, display it, otherwise render empty inputs
-const renderActiveNote = () => {
+const renderActiveNote = (edit = false) => {
   $saveNoteBtn.hide();
 
   if (activeNote.id) {
-    $noteTitle.attr("readonly", true);
-    $noteText.attr("readonly", true);
+    if (edit) {
+      $noteTitle.attr("readonly", false);
+      $noteText.attr("readonly", false);
+    } else {
+      $noteTitle.attr("readonly", true);
+      $noteText.attr("readonly", true);
+    }
     $noteTitle.val(activeNote.title);
     $noteText.val(activeNote.text);
   } else {
@@ -56,10 +71,17 @@ const handleNoteSave = function () {
     text: $noteText.val(),
   };
 
-  saveNote(newNote).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
+  if(activeNote.id){
+    editNote({...activeNote, ...newNote}).then(() => {
+      getAndRenderNotes();
+      renderActiveNote();
+    });
+  }else{
+    saveNote(newNote).then(() => {
+      getAndRenderNotes();
+      renderActiveNote();
+    });
+  }
 };
 
 // Delete the clicked note
@@ -77,6 +99,18 @@ const handleNoteDelete = function (event) {
     getAndRenderNotes();
     renderActiveNote();
   });
+};
+
+// Delete the clicked note
+const handleNoteEdit = function (event) {
+  // prevents the click listener for the list from being called when the button inside of it is clicked
+  event.stopPropagation();
+
+  const note = $(this).parent(".list-group-item").data();
+  activeNote = note;
+  renderActiveNote(true);
+  handleRenderSaveBtn();
+  console.log(activeNote);
 };
 
 // Sets the activeNote and displays it
@@ -109,7 +143,7 @@ const renderNoteList = (notes) => {
 
   // Returns jquery object for li with given text and delete button
   // unless withDeleteButton argument is provided as false
-  const create$li = (text, withDeleteButton = true) => {
+  const create$li = (text, withDeleteButton = true, withEditButton = true) => {
     const $li = $("<li class='list-group-item'>");
     const $span = $("<span>").text(text);
     $li.append($span);
@@ -120,11 +154,17 @@ const renderNoteList = (notes) => {
       );
       $li.append($delBtn);
     }
+    if (withEditButton) {
+      const $editBtn = $(
+        "<i class='far fa-edit float-right text-danger edit-note'>"
+      );
+      $li.append($editBtn);
+    }
     return $li;
   };
 
   if (notes.length === 0) {
-    noteListItems.push(create$li("No saved Notes", false));
+    noteListItems.push(create$li("No saved Notes", false, false));
   }
 
   notes.forEach((note) => {
@@ -146,6 +186,7 @@ $newNoteBtn.on("click", handleNewNoteView);
 $noteList.on("click", ".delete-note", handleNoteDelete);
 $noteTitle.on("keyup", handleRenderSaveBtn);
 $noteText.on("keyup", handleRenderSaveBtn);
+$noteList.on("click", ".edit-note", handleNoteEdit);
 
 // Gets and renders the initial list of notes
 getAndRenderNotes();
