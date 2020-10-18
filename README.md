@@ -40,7 +40,7 @@ Once installed:
 
 * View previously saved notes.
 
-* Edid previously saved notes.
+* Edit previously saved notes.
 
 * Delete previously saved notes.
 
@@ -54,12 +54,14 @@ View the deployed app here: https://agile-badlands-99229.herokuapp.com/
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.  
+
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
 ## Tests
 
 Use <a href="https://www.postman.com/downloads/" target="_blank">Postman</a> to test these end points:
-* Get:- http://localhost:5000/api/notes
+* Get all:- http://localhost:5000/api/notes
+* Get by id:- http://localhost:5000/api/notes:id
 * Post:- http://localhost:5000/api/notes
 * Delete:- http://localhost:5000/api/notes/:id
 * Put:- http://localhost:5000/api/notes/:id
